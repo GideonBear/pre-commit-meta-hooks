@@ -35,7 +35,7 @@ def generate() -> int:
     pre_commit_hooks = '\n'.join(
         pre_commit_hooks_template.format(
             name=removesuffix(file.name, '.pre-commit-config.yaml'),
-            file=file
+            file=file  # TODO
         )
         for file
         in Path.cwd().glob('*.pre-commit-config.yaml')

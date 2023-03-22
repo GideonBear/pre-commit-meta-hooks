@@ -1,6 +1,6 @@
 -   id: {name}
     name: {name}
-    description: Metahooks from file {file}
+    description: Metahooks from file {file.name}
     language: python
-    entry: pre-commit-meta-hooks-run {file}
+    entry: pre-commit-meta-hooks-run '{file}'
     verbose: true

@@ -8,6 +8,7 @@ HERE = Path(__file__).parent
 
 
 def run() -> int:
+    print(sys.argv)
     config = Path(sys.argv[1])
     files = sys.argv[2:]
 
@@ -21,7 +22,7 @@ def run() -> int:
 
 def prepare_config(config: Path) -> None:
     content = config.read_text(encoding='utf-8')
-    new_content = content.replace('$HERE', str(Path.cwd().absolute()))
+    new_content = content.replace('$HERE', str(config.parent.absolute()))
     if content != new_content:
         config.write_text(new_content, encoding='utf-8')
 

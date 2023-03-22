@@ -14,13 +14,14 @@ def run() -> int:
     prepare_config(config)
 
     return subprocess.call(
+        # TODO: only `--color always` when color is on for this process? isatty?
         ['pre-commit', 'run', '--color', 'always', '--config', config, '--files'] + files
     )
 
 
 def prepare_config(config: Path) -> None:
     content = config.read_text(encoding='utf-8')
-    new_content = content.replace('$HERE', str(Path.cwd()))
+    new_content = content.replace('$HERE', str(Path.cwd().absolute()))
     if content != new_content:
         config.write_text(new_content, encoding='utf-8')
 

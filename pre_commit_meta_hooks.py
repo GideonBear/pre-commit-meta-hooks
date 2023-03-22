@@ -20,7 +20,7 @@ def run() -> int:
 
 def prepare_config(config: Path) -> None:
     content = config.read_text(encoding='utf-8')
-    new_content = content.replace('$HERE', str(HERE))
+    new_content = content.replace('$HERE', str(Path.cwd()))
     if content != new_content:
         config.write_text(new_content, encoding='utf-8')
 

@@ -1,3 +1,4 @@
+from os import chmod
 from pathlib import Path
 from shutil import copyfile
 
@@ -11,6 +12,7 @@ def removesuffix(s: str, suffix: str) -> str:
 META = Path(__file__).parent
 
 copyfile(META / 'template.run.py', 'run.py')
+chmod('run.py', 0o777)
 
 hooks_template = (META / 'template.pre-commit-hooks.yaml').read_text()
 hooks = '\n'.join(

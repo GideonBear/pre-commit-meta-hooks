@@ -9,7 +9,8 @@ HERE = Path(__file__).parent
 
 def run() -> int:
     print(sys.argv)
-    config = Path(sys.argv[1])
+    print(Path.cwd())
+    config = Path.cwd() / sys.argv[1]
     files = sys.argv[2:]
 
     prepare_config(config)
@@ -35,7 +36,7 @@ def generate() -> int:
     pre_commit_hooks = '\n'.join(
         pre_commit_hooks_template.format(
             name=removesuffix(file.name, '.pre-commit-config.yaml'),
-            file=file  # TODO
+            file=file.name
         )
         for file
         in Path.cwd().glob('*.pre-commit-config.yaml')

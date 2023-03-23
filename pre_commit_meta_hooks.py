@@ -4,13 +4,12 @@ from pathlib import Path
 from shutil import copyfile
 
 
-HERE = Path(__file__).parent
+META = Path(__file__).parent
 
 
-def run() -> int:
+def run(hooks_path: Path) -> int:
     print(sys.argv)
-    print(Path.cwd())
-    config = Path.cwd() / sys.argv[1]
+    config = hooks_path / sys.argv[1]
     files = sys.argv[2:]
 
     prepare_config(config)
@@ -29,10 +28,11 @@ def prepare_config(config: Path) -> None:
 
 
 def generate() -> int:
-    copyfile(HERE / 'template.setup.cfg', 'setup.cfg')
-    copyfile(HERE / 'template.setup.py', 'setup.py')
+    copyfile(META / 'template.setup.cfg', 'setup.cfg')
+    copyfile(META / 'template.setup.py', 'setup.py')
+    copyfile(META / 'template.run.py', 'run.py')
 
-    pre_commit_hooks_template = (HERE / 'template.pre-commit-hooks.yaml').read_text()
+    pre_commit_hooks_template = (META / 'template.pre-commit-hooks.yaml').read_text()
     pre_commit_hooks = '\n'.join(
         pre_commit_hooks_template.format(
             name=removesuffix(file.name, '.pre-commit-config.yaml'),

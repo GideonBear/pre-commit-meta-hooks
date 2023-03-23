@@ -1,5 +1,5 @@
 -   id: {name}
     name: {name}
     language: python
-    entry: pre-commit-meta-hooks-run '{file}'
+    entry: python run.py '{file}'
     verbose: true

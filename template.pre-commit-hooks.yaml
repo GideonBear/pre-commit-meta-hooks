@@ -1,5 +1,5 @@
 -   id: {name}
     name: {name}
     language: script
-    entry: ./run '{file}'
+    entry: ./run.py {file}
     verbose: true

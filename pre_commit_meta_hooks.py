@@ -8,7 +8,6 @@ META = Path(__file__).parent
 
 
 def run(hooks_path: Path) -> int:
-    print(sys.argv)
     config = hooks_path / sys.argv[1]
     files = sys.argv[2:]
 

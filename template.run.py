@@ -26,4 +26,4 @@ def prepare_config(config: Path) -> None:
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

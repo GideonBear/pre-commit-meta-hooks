@@ -2,4 +2,6 @@
     name: {name}
     language: script
     entry: ./run.py {file}
+    args: ['']
     verbose: true
+    require_serial: true  # Workaround to run only once with all filenames
